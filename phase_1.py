@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, cross_val_score, KFold
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression, LinearRegression
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, mean_squared_error
 
 df = pd.read_csv('tumor_data_d.csv')
 
@@ -106,3 +106,5 @@ reg = LinearRegression()
 reg.fit(Xb_train, yb_train)
 yb_pred = reg.predict(Xb_test)
 print("Regression R Squared: ", reg.score(Xb_test, yb_test))
+mean_sqd_err = mean_squared_error(yb_test, yb_pred, squared=False)
+print("Mean Squared Error: ", mean_sqd_err)
